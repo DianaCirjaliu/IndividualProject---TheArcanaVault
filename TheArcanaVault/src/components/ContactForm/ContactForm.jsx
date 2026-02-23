@@ -35,32 +35,22 @@ function ContactForm() {
         }}
       >
         <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
-          The stars incline, but they do not bind... unless you forget your
-          password.
+          Speak your truth into the void, or forever remain a mystery to the
+          stars. We're listening... if the alignment is right.
         </Typography>
+        <TextField label="Name" variant="outlined" sx={whiteInputStyle} />
+        <TextField label="Email" variant="outlined" sx={whiteInputStyle} />
         <TextField
-          id="outlined-basic"
-          label="Name"
-          variant="outlined"
-          sx={whiteInputStyle}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Email"
-          variant="outlined"
-          sx={whiteInputStyle}
-        />
-        <TextField
-          id="outlined-basic"
           label="Contact number"
           variant="outlined"
           sx={whiteInputStyle}
         />
 
         <TextField
-          id="outlined-basic"
           label="Message"
           variant="outlined"
+          multiline
+          rows={4}
           sx={whiteInputStyle}
         />
 

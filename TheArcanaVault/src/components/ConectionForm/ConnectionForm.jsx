@@ -38,20 +38,9 @@ function ConnectionForm() {
           The stars incline, but they do not bind... unless you forget your
           password.
         </Typography>
+        <TextField label="Name" variant="outlined" sx={whiteInputStyle} />
+        <TextField label="Email" variant="outlined" sx={whiteInputStyle} />
         <TextField
-          id="outlined-basic"
-          label="Name"
-          variant="outlined"
-          sx={whiteInputStyle}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Email"
-          variant="outlined"
-          sx={whiteInputStyle}
-        />
-        <TextField
-          id="outlined-basic"
           label="Zodiac sign"
           variant="outlined"
           sx={whiteInputStyle}
