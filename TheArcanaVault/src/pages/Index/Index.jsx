@@ -1,4 +1,3 @@
-import styles from "./Index.module.scss";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -9,7 +8,7 @@ import zodiac from "../../../public/zodiac.png";
 
 function Index() {
   return (
-    <div className={styles.container}>
+    <div className="container">
       {/*text colon */}
       <CardContent sx={{ p: { xs: 4, md: 8 }, flex: 1 }}>
         <NavBar />
