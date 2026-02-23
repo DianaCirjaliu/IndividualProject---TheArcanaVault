@@ -7,24 +7,22 @@ const VantaComponent = () => {
   const [vantaEffect, setVantaEffect] = useState(null);
 
   useEffect(() => {
-    // 2. Inițializăm efectul doar dacă nu există deja
     if (!vantaEffect) {
       setVantaEffect(
         HALO({
           el: vantaRef.current,
-          THREE: THREE, // Pasăm instanța de Three.js
+          THREE: THREE,
           mouseControls: true,
           touchControls: true,
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          // Poți adăuga și alte proprietăți de styling aici
+
           backgroundColor: 0x111111,
         }),
       );
     }
 
-    // 3. Curățăm efectul când componenta este demontată pentru a evita leak-urile de memorie
     return () => {
       if (vantaEffect) vantaEffect.destroy();
     };

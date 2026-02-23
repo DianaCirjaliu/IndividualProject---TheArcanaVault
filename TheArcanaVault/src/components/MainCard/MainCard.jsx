@@ -5,8 +5,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
-// Verifică de 2 ori dacă această cale e bună:
 import zodiac from "../../assets/zodiac.png";
+import NavBar from "../NavBar/NavBar";
 
 function MainCard() {
   return (
@@ -32,6 +32,7 @@ function MainCard() {
     >
       {/*text colon */}
       <CardContent sx={{ p: { xs: 4, md: 8 }, flex: 1 }}>
+        <NavBar />
         <Typography
           variant="h2"
           component="div"
