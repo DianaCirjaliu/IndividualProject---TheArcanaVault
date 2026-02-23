@@ -23,50 +23,52 @@ const whiteInputStyle = {
 
 function ContactForm() {
   return (
-    <CardContent
-      sx={{
-        padding: 6,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 3,
-      }}
-    >
-      <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
-        The stars incline, but they do not bind... unless you forget your
-        password.
-      </Typography>
-      <TextField
-        id="outlined-basic"
-        label="Name"
-        variant="outlined"
-        sx={whiteInputStyle}
-      />
-      <TextField
-        id="outlined-basic"
-        label="Email"
-        variant="outlined"
-        sx={whiteInputStyle}
-      />
-      <TextField
-        id="outlined-basic"
-        label="Contact number"
-        variant="outlined"
-        sx={whiteInputStyle}
-      />
+    <div>
+      <CardContent
+        sx={{
+          padding: 6,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 3,
+        }}
+      >
+        <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
+          The stars incline, but they do not bind... unless you forget your
+          password.
+        </Typography>
+        <TextField
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
+          sx={whiteInputStyle}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
+          sx={whiteInputStyle}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Contact number"
+          variant="outlined"
+          sx={whiteInputStyle}
+        />
 
-      <TextField
-        id="outlined-basic"
-        label="Message"
-        variant="outlined"
-        sx={whiteInputStyle}
-      />
+        <TextField
+          id="outlined-basic"
+          label="Message"
+          variant="outlined"
+          sx={whiteInputStyle}
+        />
 
-      <CardActions>
-        <ArcanaButton children={"Submit"} />
-      </CardActions>
-    </CardContent>
+        <CardActions>
+          <ArcanaButton children={"Submit"} />
+        </CardActions>
+      </CardContent>
+    </div>
   );
 }
 
