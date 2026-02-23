@@ -8,7 +8,7 @@ import zodiac from "../../../public/zodiac.png";
 
 function Index() {
   return (
-    <div className="container">
+    <div className="container" style={{ flexDirection: "row" }}>
       {/*text colon */}
       <CardContent sx={{ p: { xs: 4, md: 8 }, flex: 1 }}>
         <NavBar />

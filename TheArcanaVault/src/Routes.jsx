@@ -4,6 +4,7 @@ import Login from "./pages/Login/Login";
 import MainLayout from "./layouts/MainLayout";
 import SecondaryLayout from "./layouts/SecondaryLayout";
 import Contact from "./pages/Contact/Contact";
+import ReadingPage from "./pages/ReadingPage/ReadingPage";
 
 function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ function AppRoutes() {
           <Route element={<SecondaryLayout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/readingPage" element={<ReadingPage />} />
           </Route>
         </Route>
       </Routes>
