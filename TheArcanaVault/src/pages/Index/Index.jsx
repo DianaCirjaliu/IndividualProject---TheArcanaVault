@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import NavBar from "../../components/NavBar/NavBar";
 import ArcanaButton from "../../components/Button/Button";
-import zodiac from "../../../public/zodiac.png";
+import zodiac from "/zodiac.png";
 
 function Index() {
   return (

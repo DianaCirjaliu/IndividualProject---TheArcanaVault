@@ -1,14 +1,19 @@
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function NavBar() {
-  const [value, setValue] = useState(0);
+  const location = useLocation();
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const pathnameToIndex = {
+    "/": 0,
+    "/login": 1,
+    "/readingPage": 2,
+    "/contact": 3,
   };
+
+  const value = pathnameToIndex[location.pathname] ?? 0;
   return (
     <Box
       sx={{
@@ -18,11 +23,11 @@ function NavBar() {
         top: 0,
         left: 0,
         textColor: "purple",
+        zIndex: 1,
       }}
     >
       <Tabs
         value={value}
-        onChange={handleChange}
         centered
         sx={{
           "& .MuiTab-root": {
@@ -41,10 +46,10 @@ function NavBar() {
           },
         }}
       >
-        <Tab label="Origin" />
-        <Tab label="Login" />
-        <Tab label="The Spread" />
-        <Tab label="Contact" />
+        <Tab label="Origin" component={Link} to="/" />
+        <Tab label="Login" component={Link} to="/login" />
+        <Tab label="The Spread" component={Link} to="/readingPage" />
+        <Tab label="Contact" component={Link} to="/contact" />
       </Tabs>
     </Box>
   );
