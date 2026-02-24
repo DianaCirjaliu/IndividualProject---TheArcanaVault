@@ -1,8 +1,9 @@
 import Button from "@mui/material/Button";
 
-function ArcanaButton({ children }) {
+function ArcanaButton({ children, onClick }) {
   return (
     <Button
+      onClick={onClick}
       variant="outlined"
       sx={{
         mt: 6,

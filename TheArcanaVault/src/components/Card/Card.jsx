@@ -1,4 +1,3 @@
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -6,45 +5,63 @@ import Box from "@mui/material/Box";
 
 function CardTarot({ image, name, meaning, description }) {
   return (
-    <Card
+    <Box
       sx={{
-        maxWidth: 800,
-        height: "fit-content",
-        backgroundColor: "rgba(225, 213, 199, 0.58)",
-        transition: "transform 0.3s ease-in-out",
-        "&:hover": { transform: "scale(1.05)" },
-        paddingLeft: 5,
-        paddingTop: 5,
-        paddingBottom: 5,
-        textAlign: "center",
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: "rgba(207, 198, 198, 0.21)",
+        borderRadius: "20px",
+        overflow: "hidden",
+        maxWidth: "900px",
+        margin: "20px auto",
+        border: "1px solid rgba(238, 235, 241, 0.3)",
       }}
     >
-      <CardMedia
-        sx={{ height: 400, width: 300 }}
-        image={image}
-        title="card image"
-      />
+      {/*text colon */}
       <CardContent
         sx={{
-          display: "flex",
+          display: "grid",
           justifyContent: "center",
           textAlign: "center",
           flexDirection: "column",
+          maxHeight: "500px",
+          maxWidth: "300px",
+          overflow: "auto",
+          gap: 2,
         }}
       >
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5">
           {name}
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {meaning}
+        <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+          Meaning: {meaning}
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {description}
+        <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+          Description: {description}
         </Typography>
       </CardContent>
-    </Card>
+      {/*image colon */}
+      <Box
+        sx={{
+          flex: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          p: 4,
+        }}
+      >
+        <Box sx={{ p: 2, flexShrink: 0 }}>
+          <CardMedia
+            component="img"
+            sx={{ height: 400, width: 300, objectFit: "contain" }}
+            image={image}
+            title="card image"
+          />
+        </Box>
+      </Box>
+    </Box>
   );
 }
 
