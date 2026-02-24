@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import ArcanaButton from "../../components/Button/Button";
 import CardTarot from "../../components/Card/Card";
 import { useState } from "react";
-import getData from "./getData.js";
+import getData from "../../utils/getData";
 
 function ReadingPage() {
   const [card, setCard] = useState(null);
