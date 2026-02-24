@@ -37,7 +37,7 @@ function SingUp() {
       </Typography>
       <TextField
         required
-        label="Name"
+        label="Username"
         variant="outlined"
         sx={whiteInputStyle}
       />

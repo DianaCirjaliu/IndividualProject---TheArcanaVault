@@ -33,7 +33,7 @@ function LogIn() {
       </Typography>
       <TextField
         required
-        label="Email"
+        label="Username"
         variant="outlined"
         sx={whiteInputStyle}
       />
