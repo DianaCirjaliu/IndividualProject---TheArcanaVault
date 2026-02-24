@@ -4,8 +4,14 @@ import { useState } from "react";
 
 function ReadingPage() {
   const [card, setCard] = useState(null);
+  const [drawCount, setDrawCount] = useState(0);
 
   const drawCard = async () => {
+    if (drawCount >= 3) {
+      alert("The stars have spoken. No more cards can be drawn today.");
+      return;
+    }
+
     try {
       const res = await fetch("https://tarotapi.dev/api/v1/cards/random?n=1");
       const data = await res.json();
@@ -17,6 +23,8 @@ function ReadingPage() {
         description: c.desc,
         image: `https://www.sacred-texts.com/tarot/pkt/img/${c.name_short}.jpg`,
       });
+
+      setDrawCount((prev) => prev + 1);
     } catch (e) {
       console.error("The stars are silent...", e);
     }
