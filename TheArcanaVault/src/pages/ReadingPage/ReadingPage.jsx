@@ -3,6 +3,9 @@ import ArcanaButton from "../../components/Button/Button";
 import CardTarot from "../../components/Card/Card";
 import { useState } from "react";
 import getData from "../../utils/getData";
+import Lottie from "lottie-react";
+import tarotCards from "../../assets/Tarot cards.json";
+import Box from "@mui/material/Box";
 
 function ReadingPage() {
   const [card, setCard] = useState(null);
@@ -65,7 +68,18 @@ function ReadingPage() {
         </Typography>
       )}
 
-      {drawnCards.length === 3}
+      <Box
+        sx={{
+          width: "800px",
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {drawnCards.length === 3 && (
+          <Lottie animationData={tarotCards} loop={false} />
+        )}
+      </Box>
 
       <ArcanaButton
         children={drawnCards.length === 3 ? "Destiny Sealed" : "Draw Card"}

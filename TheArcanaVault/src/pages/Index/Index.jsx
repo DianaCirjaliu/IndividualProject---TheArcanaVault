@@ -4,13 +4,24 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import NavBar from "../../components/NavBar/NavBar";
 import ArcanaButton from "../../components/Button/Button";
-import zodiac from "/zodiac.png";
+// import zodiac from "/zodiac.png";
+import Lottie from "lottie-react";
+import zodiac from "../../assets/Zodiac sign.json";
 
 function Index() {
   return (
     <div className="container" style={{ flexDirection: "row" }}>
       {/*text colon */}
-      <CardContent sx={{ p: { xs: 4, md: 8 }, flex: 1 }}>
+      <CardContent
+        sx={{
+          p: { xs: 4, md: 8 },
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          gap: 3,
+        }}
+      >
         <NavBar />
         <Typography
           variant="h2"
@@ -44,7 +55,7 @@ function Index() {
             lineHeight: 1.6,
           }}
         >
-          Explore yourself. Explore the future, if you dare ...
+          Explore yourself. Explore the future, if you dare
         </Typography>
         <ArcanaButton children={"Get Started"} />
       </CardContent>
@@ -58,21 +69,7 @@ function Index() {
           p: 4,
         }}
       >
-        <CardMedia
-          component="img"
-          image={zodiac}
-          alt="zodiac image"
-          sx={{
-            width: "100%",
-            maxWidth: "450px",
-            height: "auto",
-            animation: "rotateZodiac 100s linear infinite",
-            "@keyframes rotateZodiac": {
-              from: { transform: "rotate(0deg)" },
-              to: { transform: "rotate(360deg)" },
-            },
-          }}
-        />
+        <Lottie animationData={zodiac} loop={false} />
       </Box>
     </div>
   );
