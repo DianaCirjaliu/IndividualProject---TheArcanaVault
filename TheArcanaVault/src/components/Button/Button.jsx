@@ -6,15 +6,15 @@ function ArcanaButton({ children }) {
       variant="outlined"
       sx={{
         mt: 6,
+        margin: 0,
         p: "12px 40px",
         color: "white",
+        bgcolor: "rgba(111, 5, 210, 0.61)",
         border: "1px solid #A855F7",
         borderRadius: "20px",
         boxShadow: "0 0 15px rgba(168, 85, 247, 0.4)",
-        "&:hover": {
-          border: "1px solid #EC4899",
-          backgroundColor: "rgba(168, 85, 247, 0.1)",
-        },
+        transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
+        "&:hover": { transform: "translateY(-4px)" },
       }}
     >
       {children}
