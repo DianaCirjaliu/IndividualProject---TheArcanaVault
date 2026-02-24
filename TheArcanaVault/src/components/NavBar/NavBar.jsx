@@ -10,7 +10,8 @@ function NavBar() {
     "/": 0,
     "/login": 1,
     "/readingPage": 2,
-    "/contact": 3,
+    "/predictionPage": 3,
+    "/contact": 4,
   };
 
   const value = pathnameToIndex[location.pathname] ?? 0;
@@ -22,7 +23,6 @@ function NavBar() {
         position: "fixed",
         top: 0,
         left: 0,
-        textColor: "purple",
         zIndex: 1,
       }}
     >
@@ -41,7 +41,7 @@ function NavBar() {
           },
 
           "& .MuiTabs-indicator": {
-            bgcolor: "purple",
+            bgcolor: "#A855F7",
             height: "3px",
           },
         }}
@@ -49,6 +49,7 @@ function NavBar() {
         <Tab label="Origin" component={Link} to="/" />
         <Tab label="Login" component={Link} to="/login" />
         <Tab label="The Spread" component={Link} to="/readingPage" />
+        <Tab label="The Weaver’s Hall" component={Link} to="/predictionPage" />
         <Tab label="Contact" component={Link} to="/contact" />
       </Tabs>
     </Box>

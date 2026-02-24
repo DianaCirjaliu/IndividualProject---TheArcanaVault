@@ -5,6 +5,7 @@ import MainLayout from "./layouts/MainLayout";
 import SecondaryLayout from "./layouts/SecondaryLayout";
 import Contact from "./pages/Contact/Contact";
 import ReadingPage from "./pages/ReadingPage/ReadingPage";
+import PredictionPage from "./pages/PredictionPage/PredictionPage";
 
 function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ function AppRoutes() {
             <Route path="/login" element={<Login />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/readingPage" element={<ReadingPage />} />
+            <Route path="/predictionPage" element={<PredictionPage />} />
           </Route>
         </Route>
       </Routes>

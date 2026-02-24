@@ -29,7 +29,9 @@ function CardTarot({ image, name, meaning, description }) {
           maxHeight: "500px",
           maxWidth: "300px",
           overflow: "auto",
-          gap: 2,
+          gap: 4,
+          pt: 6,
+          pb: 6,
         }}
       >
         <Typography gutterBottom variant="h5">
