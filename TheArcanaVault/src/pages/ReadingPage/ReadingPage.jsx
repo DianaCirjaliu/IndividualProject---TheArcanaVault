@@ -27,8 +27,8 @@ function ReadingPage() {
           image={selectedCard.image}
         />
       )}
-      {/* <button onClick={drawCard}>test btn</button> */}
-      <ArcanaButton children={"Draw Card"}></ArcanaButton>
+      <button onClick={drawCard}>test btn</button>
+      {/* <ArcanaButton children={"Draw Card"}></ArcanaButton> */}
     </div>
   );
 }
