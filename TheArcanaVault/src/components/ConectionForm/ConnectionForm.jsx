@@ -17,8 +17,8 @@ function ConnectionForm() {
           height: "auto",
         }}
       >
-        {/* <SingUp /> */}
-        <LogIn />
+        <SingUp />
+        {/* <LogIn /> */}
       </CardContent>
     </div>
   );

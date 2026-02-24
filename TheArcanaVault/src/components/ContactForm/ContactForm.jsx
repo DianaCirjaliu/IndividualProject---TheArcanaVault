@@ -26,7 +26,7 @@ function ContactForm() {
     <div>
       <CardContent
         sx={{
-          padding: 6,
+          padding: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -38,15 +38,27 @@ function ContactForm() {
           Speak your truth into the void, or forever remain a mystery to the
           stars. We're listening... if the alignment is right.
         </Typography>
-        <TextField label="Name" variant="outlined" sx={whiteInputStyle} />
-        <TextField label="Email" variant="outlined" sx={whiteInputStyle} />
         <TextField
+          required
+          label="Username"
+          variant="outlined"
+          sx={whiteInputStyle}
+        />
+        <TextField
+          required
+          label="Email"
+          variant="outlined"
+          sx={whiteInputStyle}
+        />
+        <TextField
+          required
           label="Contact number"
           variant="outlined"
           sx={whiteInputStyle}
         />
 
         <TextField
+          required
           label="Message"
           variant="outlined"
           multiline
