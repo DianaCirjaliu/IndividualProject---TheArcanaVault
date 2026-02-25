@@ -48,11 +48,21 @@ function ReadingPage() {
       setDrawnCards(updatedCards);
 
       if (updatedCards.length === 3) {
-        const data = {
+        const readingData = {
+          user_id: user.id,
           cards: updatedCards,
-          timestamp: Date.now(),
+          status: "pending",
         };
-        localStorage.setItem(`userFate_${user.id}`, JSON.stringify(data));
+
+        const { error } = await supabase.from("readings").insert([readingData]);
+        if (error) {
+          console.log(error);
+        } else {
+          localStorage.setItem(
+            `userFate_${user.id}`,
+            JSON.stringify({ cards: updatedCards, timestamp: Date.now() }),
+          );
+        }
 
         setTimeout(() => {
           setCard(null);
