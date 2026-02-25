@@ -1,17 +1,29 @@
 import Typography from "@mui/material/Typography";
 import ArcanaButton from "../../components/Button/Button";
 import CardTarot from "../../components/Card/Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getData from "../../utils/getData";
 import Lottie from "lottie-react";
 import tarotCards from "../../assets/Tarot cards.json";
 import Box from "@mui/material/Box";
+import { supabase } from "../../services/supabaseClient";
 
 function ReadingPage() {
   const [card, setCard] = useState(null);
-  const [drawnCards, setDrawnCards] = useState(() => {
-    return getData();
-  });
+  const [drawnCards, setDrawnCards] = useState([]);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      const currentUser = session?.user ?? null;
+      setUser(currentUser);
+
+      if (currentUser) {
+        const cards = getData(currentUser.id);
+        setDrawnCards(cards);
+      }
+    });
+  }, []);
 
   const drawCard = async () => {
     if (drawnCards.length >= 3) {
@@ -40,7 +52,11 @@ function ReadingPage() {
           cards: updatedCards,
           timestamp: Date.now(),
         };
-        localStorage.setItem("userFate", JSON.stringify(data));
+        localStorage.setItem(`userFate_${user.id}`, JSON.stringify(data));
+
+        setTimeout(() => {
+          setCard(null);
+        }, 20000);
       }
     } catch (e) {
       console.error("The stars are silent...", e);
@@ -49,6 +65,19 @@ function ReadingPage() {
 
   return (
     <div className="container" style={{ gap: "20px" }}>
+      {!user && (
+        <Typography
+          variant="h6"
+          sx={{
+            color: "rgba(255, 255, 255, 0.7)",
+            fontStyle: "italic",
+            mb: 2,
+            textAlign: "center",
+          }}
+        >
+          You must be logged in to touch the sacred deck!
+        </Typography>
+      )}
       {card && <CardTarot {...card} />}
       {drawnCards.length === 0 && (
         <Typography
@@ -76,7 +105,7 @@ function ReadingPage() {
           justifyContent: "center",
         }}
       >
-        {drawnCards.length === 3 && (
+        {drawnCards.length === 3 && !card && (
           <Lottie animationData={tarotCards} loop={false} />
         )}
       </Box>
@@ -84,7 +113,7 @@ function ReadingPage() {
       <ArcanaButton
         children={drawnCards.length === 3 ? "Destiny Sealed" : "Draw Card"}
         onClick={drawCard}
-        disabled={drawnCards.length === 3}
+        disabled={drawnCards.length === 3 || !user}
       ></ArcanaButton>
     </div>
   );
