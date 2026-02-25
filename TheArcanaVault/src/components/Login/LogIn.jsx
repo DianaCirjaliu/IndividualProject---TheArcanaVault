@@ -4,10 +4,11 @@ import ArcanaButton from "../Button/Button";
 import whiteInputStyle from "../../globalStyles/whiteInputStyle";
 import Button from "@mui/material/Button";
 
-function LogIn() {
+function LogIn({ onSwitch }) {
   return (
     <>
       <Button
+        onClick={onSwitch}
         sx={{
           position: "fixed",
           top: 16,

@@ -1,8 +1,10 @@
 import CardContent from "@mui/material/CardContent";
 import SingUp from "../SignUp/SingUp";
 import LogIn from "../Login/LogIn";
+import { useState } from "react";
 
 function ConnectionForm() {
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <div>
       <CardContent
@@ -17,8 +19,11 @@ function ConnectionForm() {
           height: "auto",
         }}
       >
-        <SingUp />
-        {/* <LogIn /> */}
+        {isLogin ? (
+          <LogIn onSwitch={() => setIsLogin(false)} />
+        ) : (
+          <SingUp onSwitch={() => setIsLogin(true)} />
+        )}
       </CardContent>
     </div>
   );
