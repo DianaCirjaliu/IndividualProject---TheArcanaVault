@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { Grid, Container, Typography, Box } from "@mui/material";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function CardListPage() {
   const [cards, setCards] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -24,6 +27,16 @@ function CardListPage() {
     fetchCards();
   }, []);
 
+  const filteredCards = cards.filter((card) =>
+    card.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
+  const displayedCards = [...filteredCards].sort((a, b) => {
+    if (sortOrder === "asc") return a.name.localeCompare(b.name);
+    if (sortOrder === "des") return b.name.localeCompare(a.name);
+    return 0;
+  });
+
   return (
     <Container sx={{ py: 6 }}>
       <Typography
@@ -36,11 +49,14 @@ function CardListPage() {
       >
         The Universal Deck
       </Typography>
+      <SearchBar
+        onSearch={(text) => setSearchQuery(text)}
+        onSort={(criteria) => setSortOrder(criteria)}
+      />
 
       <Grid container spacing={4} justifyContent="center">
-        {cards.map((card, index) => (
+        {displayedCards.map((card, index) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-            {/* Construim "cartea" direct aici */}
             <Box
               sx={{
                 display: "flex",
