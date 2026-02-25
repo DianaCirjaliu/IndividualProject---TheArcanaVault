@@ -9,7 +9,17 @@ export const loginUser = async (email, password) => {
 
     if (error) throw error;
 
-    return { success: true, user: data.user };
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", data.user.id)
+      .single();
+
+    return {
+      success: true,
+      user: data.user,
+      isAdmin: profile?.role === "admin",
+    };
   } catch (error) {
     return { success: false, message: error.message };
   }

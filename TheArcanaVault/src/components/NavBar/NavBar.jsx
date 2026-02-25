@@ -2,20 +2,27 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function NavBar() {
   const location = useLocation();
+  const { isAdmin } = useSelector((state) => state.auth);
 
-  const pathnameToIndex = {
-    "/": 0,
-    "/login": 1,
-    "/readingPage": 2,
-    "/predictionPage": 3,
-    "/tarotDeck": 4,
-    "/contact": 5,
-  };
+  const allTabs = [
+    { label: "Origin", to: "/", visible: true },
+    { label: "Login", to: "/login", visible: true },
+    { label: "The Spread", to: "/readingPage", visible: !isAdmin },
+    { label: "The Weaver’s Hall", to: "/predictionPage", visible: true },
+    { label: "Tarot Deck", to: "/tarotDeck", visible: true },
+    { label: "Contact", to: "/contact", visible: true },
+  ];
 
-  const value = pathnameToIndex[location.pathname] ?? 0;
+  const visibleTabs = allTabs.filter((tab) => tab.visible);
+  const currentIndex = visibleTabs.findIndex(
+    (tab) => tab.to === location.pathname,
+  );
+  const value = currentIndex !== -1 ? currentIndex : 0;
+
   return (
     <Box
       sx={{
@@ -47,12 +54,9 @@ function NavBar() {
           },
         }}
       >
-        <Tab label="Origin" component={Link} to="/" />
-        <Tab label="Login" component={Link} to="/login" />
-        <Tab label="The Spread" component={Link} to="/readingPage" />
-        <Tab label="The Weaver’s Hall" component={Link} to="/predictionPage" />
-        <Tab label="Tarot Deck" component={Link} to="/tarotDeck" />
-        <Tab label="Contact" component={Link} to="/contact" />
+        {visibleTabs.map((tab) => (
+          <Tab key={tab.to} label={tab.label} component={Link} to={tab.to} />
+        ))}
       </Tabs>
     </Box>
   );
