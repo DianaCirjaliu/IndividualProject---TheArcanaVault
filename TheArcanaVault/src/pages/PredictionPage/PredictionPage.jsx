@@ -4,9 +4,30 @@ import getData from "../../utils/getData";
 import Grid from "@mui/material/Grid";
 import magicBallAnim from "../../assets/Magic Crystal Ball.json";
 import Lottie from "lottie-react";
+import { useState, useEffect } from "react";
+import { supabase } from "../../services/supabaseClient";
 
 function PredictionPage() {
-  const data = getData();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserAndCards = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (session?.user) {
+        const userCards = getData(session.user.id);
+        setData(userCards);
+      }
+      setLoading(false);
+    };
+
+    fetchUserAndCards();
+  }, []);
+
+  if (loading) return null;
 
   return (
     <div className="container" style={{ textAlign: "center" }}>
