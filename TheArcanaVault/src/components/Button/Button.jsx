@@ -1,9 +1,11 @@
 import Button from "@mui/material/Button";
 
-function ArcanaButton({ children, onClick }) {
+function ArcanaButton({ children, onClick, type = "button", disabled }) {
   return (
     <Button
+      type={type}
       onClick={onClick}
+      disabled={disabled}
       variant="outlined"
       sx={{
         mt: 6,

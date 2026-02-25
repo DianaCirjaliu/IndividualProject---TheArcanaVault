@@ -6,8 +6,40 @@ import Checkbox from "@mui/material/Checkbox";
 import whiteInputStyle from "../../globalStyles/whiteInputStyle";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import { registerNewUser } from "../../services/auth/signUpService";
+import { useState } from "react";
 
 function SingUp() {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const { email, password, confirm_password, username, zodiac } =
+      Object.fromEntries(formData);
+
+    //check to see if passwords are matching
+    if (password !== confirm_password) {
+      alert("The stars are crossed: Passwords do not match!");
+      return;
+    }
+
+    setLoading(true);
+
+    const result = await registerNewUser(email, password, username, zodiac);
+
+    setLoading(false);
+
+    if (result.success) {
+      alert("Check ur email for confirmation");
+      event.target.reset();
+    } else {
+      alert("Erorr: " + result.message);
+    }
+
+    console.log(Object.fromEntries(formData.entries()));
+  };
+
   return (
     <>
       <Button
@@ -35,66 +67,87 @@ function SingUp() {
         aeon. <br />
         Now, it is time to claim your celestial identity.
       </Typography>
-      <TextField
-        required
-        label="Username"
-        variant="outlined"
-        sx={whiteInputStyle}
-      />
-      <TextField
-        required
-        label="Email"
-        variant="outlined"
-        sx={whiteInputStyle}
-      />
-      <TextField
-        required
-        select
-        label="Zodiac sign"
-        variant="outlined"
-        sx={whiteInputStyle}
-        defaultValue={""}
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
       >
-        <MenuItem value="Aries">Aries</MenuItem>
-        <MenuItem value="Taurus">Taurus</MenuItem>
-        <MenuItem value="Gemini">Gemini</MenuItem>
-        <MenuItem value="Cancer">Cancer</MenuItem>
-        <MenuItem value="Leo">Leo</MenuItem>
-        <MenuItem value="Virgo">Virgo</MenuItem>
-        <MenuItem value="Libra">Libra</MenuItem>
-        <MenuItem value="Scorpio">Scorpio</MenuItem>
-        <MenuItem value="Sagittarius">Sagittarius</MenuItem>
-        <MenuItem value="Capricorn">Capricorn</MenuItem>
-        <MenuItem value="Aquarius">Aquarius</MenuItem>
-        <MenuItem value="Pisces">Pisces</MenuItem>
-      </TextField>
-      <TextField
-        required
-        label="Password"
-        variant="outlined"
-        sx={whiteInputStyle}
-      />
-      <TextField
-        required
-        label="Confirm Password"
-        variant="outlined"
-        sx={whiteInputStyle}
-      />
-      <FormControlLabel
-        required
-        control={
-          <Checkbox
-            sx={{
-              color: "rgba(255, 255, 255, 0.5)",
-              "&.Mui-checked": {
-                color: "#f1eff2",
-              },
-            }}
-          />
-        }
-        label="I have read the celestial laws and I am ready to face what the stars have written for me."
-      />
-      <ArcanaButton children={"Create account"} />
+        <TextField
+          required
+          label="Username"
+          variant="outlined"
+          name="username"
+          sx={whiteInputStyle}
+        />
+        <TextField
+          required
+          label="Email"
+          variant="outlined"
+          name="email"
+          sx={whiteInputStyle}
+        />
+        <TextField
+          required
+          select
+          label="Zodiac sign"
+          variant="outlined"
+          name="zodiac"
+          sx={whiteInputStyle}
+          defaultValue={""}
+        >
+          <MenuItem value="Aries">Aries</MenuItem>
+          <MenuItem value="Taurus">Taurus</MenuItem>
+          <MenuItem value="Gemini">Gemini</MenuItem>
+          <MenuItem value="Cancer">Cancer</MenuItem>
+          <MenuItem value="Leo">Leo</MenuItem>
+          <MenuItem value="Virgo">Virgo</MenuItem>
+          <MenuItem value="Libra">Libra</MenuItem>
+          <MenuItem value="Scorpio">Scorpio</MenuItem>
+          <MenuItem value="Sagittarius">Sagittarius</MenuItem>
+          <MenuItem value="Capricorn">Capricorn</MenuItem>
+          <MenuItem value="Aquarius">Aquarius</MenuItem>
+          <MenuItem value="Pisces">Pisces</MenuItem>
+        </TextField>
+        <TextField
+          required
+          label="Password"
+          variant="outlined"
+          name="password"
+          type="password"
+          sx={whiteInputStyle}
+        />
+        <TextField
+          required
+          label="Confirm Password"
+          variant="outlined"
+          name="confirm_password"
+          type="password"
+          sx={whiteInputStyle}
+        />
+        <FormControlLabel
+          required
+          control={
+            <Checkbox
+              sx={{
+                color: "rgba(255, 255, 255, 0.5)",
+                "&.Mui-checked": {
+                  color: "#f1eff2",
+                },
+              }}
+            />
+          }
+          label="I have read the celestial laws and I am ready to face what the stars have written for me."
+        />
+
+        <ArcanaButton
+          type="submit"
+          disabled={loading}
+          children={loading ? "Aligning stars..." : "Create account"}
+        />
+      </form>
     </>
   );
 }
