@@ -5,9 +5,12 @@ import whiteInputStyle from "../../globalStyles/whiteInputStyle";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import { loginUser } from "../../services/auth/logInService";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../store/authSlice";
 
 function LogIn({ onSwitch }) {
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,6 +22,12 @@ function LogIn({ onSwitch }) {
     setLoading(false);
 
     if (result.success) {
+      dispatch(
+        setCredentials({
+          user: result.user,
+          isAdmin: result.isAdmin,
+        }),
+      );
       alert("Welcome back, Seeker");
     } else {
       alert("The stars are clouded: " + result.message);
