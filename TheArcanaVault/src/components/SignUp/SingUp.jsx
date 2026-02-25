@@ -9,7 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { registerNewUser } from "../../services/auth/signUpService";
 import { useState } from "react";
 
-function SingUp() {
+function SingUp({ onSwitch }) {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
@@ -43,6 +43,7 @@ function SingUp() {
   return (
     <>
       <Button
+        onClick={onSwitch}
         sx={{
           position: "fixed",
           top: 16,
