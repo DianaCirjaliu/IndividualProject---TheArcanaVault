@@ -13,7 +13,6 @@ function CardTarot({ image, name, meaning, description }) {
         justifyContent: "center",
         bgcolor: "rgba(207, 198, 198, 0.21)",
         borderRadius: "20px",
-        overflow: "hidden",
         maxWidth: "900px",
         margin: "20px auto",
         border: "1px solid rgba(238, 235, 241, 0.3)",
@@ -57,7 +56,12 @@ function CardTarot({ image, name, meaning, description }) {
         <Box sx={{ p: 2, flexShrink: 0 }}>
           <CardMedia
             component="img"
-            sx={{ height: 400, width: 300, objectFit: "contain" }}
+            sx={{
+              height: 400,
+              width: 300,
+              objectFit: "contain",
+              borderRadius: "12px",
+            }}
             image={image}
             title="card image"
           />
