@@ -30,9 +30,8 @@ function LogIn({ onSwitch }) {
         onClick={onSwitch}
         sx={{
           position: "fixed",
-          top: 16,
-          right: 16,
-          bgcolor: "rgba(168, 85, 247, 0.2)",
+          bottom: 200,
+          bgcolor: "rgba(79, 11, 142, 0.47)",
           color: "white",
           border: "1px solid rgba(168, 85, 247, 0.5)",
           borderRadius: "8px",
@@ -58,6 +57,9 @@ function LogIn({ onSwitch }) {
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
+          width: "100%",
+          overflow: "visible",
+          gap: 3,
         }}
       >
         <TextField
@@ -72,6 +74,7 @@ function LogIn({ onSwitch }) {
           label="Password"
           name="password"
           variant="outlined"
+          type="password"
           sx={whiteInputStyle}
         />
         <ArcanaButton

@@ -46,9 +46,8 @@ function SingUp({ onSwitch }) {
         onClick={onSwitch}
         sx={{
           position: "fixed",
-          top: 16,
-          right: 16,
-          bgcolor: "rgba(168, 85, 247, 0.2)",
+          bottom: 70,
+          bgcolor: "rgba(79, 11, 142, 0.47)",
           color: "white",
           border: "1px solid rgba(168, 85, 247, 0.5)",
           borderRadius: "8px",
