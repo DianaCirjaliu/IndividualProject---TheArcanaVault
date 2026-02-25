@@ -11,7 +11,8 @@ function NavBar() {
     "/login": 1,
     "/readingPage": 2,
     "/predictionPage": 3,
-    "/contact": 4,
+    "/tarotDeck": 4,
+    "/contact": 5,
   };
 
   const value = pathnameToIndex[location.pathname] ?? 0;
@@ -50,6 +51,7 @@ function NavBar() {
         <Tab label="Login" component={Link} to="/login" />
         <Tab label="The Spread" component={Link} to="/readingPage" />
         <Tab label="The Weaver’s Hall" component={Link} to="/predictionPage" />
+        <Tab label="Tarot Deck" component={Link} to="/tarotDeck" />
         <Tab label="Contact" component={Link} to="/contact" />
       </Tabs>
     </Box>
