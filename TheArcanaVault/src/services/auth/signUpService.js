@@ -25,5 +25,7 @@ export const registerNewUser = async (email, password, username, zodiac) => {
 
   if (dbError) return { success: false, message: dbError.message };
 
+  await supabase.auth.signOut();
+
   return { success: true, user: data.user };
 };
