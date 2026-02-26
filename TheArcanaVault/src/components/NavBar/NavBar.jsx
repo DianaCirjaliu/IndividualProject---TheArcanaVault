@@ -1,12 +1,19 @@
+//material ui components
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import { useMediaQuery, useTheme } from "@mui/material";
+
+//hooks
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function NavBar() {
   const location = useLocation();
   const { isAdmin } = useSelector((state) => state.auth);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const allTabs = [
     { label: "Origin", to: "/", visible: true },
@@ -36,11 +43,19 @@ function NavBar() {
     >
       <Tabs
         value={value}
-        centered
+        variant={isMobile ? "scrollable" : "standard"}
+        scrollButtons="auto"
+        allowScrollButtonsMobile
+        centered={!isMobile}
         sx={{
+          "& .MuiTabs-flexContainer": {
+            minWidth: isMobile ? "max-content" : "100%",
+          },
+
           "& .MuiTab-root": {
             color: "rgba(255, 255, 255, 0.7)",
             fontFamily: "'Playfair Display', serif",
+            fontSize: { xs: "0.8rem", sm: "1rem" },
           },
 
           "& .Mui-selected": {
