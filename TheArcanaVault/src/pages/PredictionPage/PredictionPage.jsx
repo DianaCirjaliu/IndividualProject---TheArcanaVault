@@ -1,6 +1,11 @@
+//hook
 import { useSelector } from "react-redux";
+
+//custom components
 import AdminConsole from "../../components/Console/AdminConsole";
 import UserConsole from "../../components/Console/UserConsole";
+
+//material ui component
 import Box from "@mui/material/Box";
 
 function PredictionPage() {

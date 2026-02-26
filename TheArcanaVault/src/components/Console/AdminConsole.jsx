@@ -1,9 +1,16 @@
-import { useEffect, useState } from "react";
-import { supabase } from "../../services/supabaseClient";
+//material ui components
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+
+//hooks
+import { useEffect, useState } from "react";
+
+//api to database
+import { supabase } from "../../services/supabaseClient";
+
+//custom components
 import ArcanaButton from "../Button/Button";
 import whiteInputStyle from "../../globalStyles/whiteInputStyle";
 import DrawnCards from "./DrawnCards";
