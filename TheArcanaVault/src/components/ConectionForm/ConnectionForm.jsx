@@ -40,6 +40,10 @@ function ConnectionForm() {
           display: "flex",
           flexDirection: "column",
           gap: 2,
+          height: "100%",
+          minHeight: "200px",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Typography variant="h5">Welcome back, Seeker</Typography>
