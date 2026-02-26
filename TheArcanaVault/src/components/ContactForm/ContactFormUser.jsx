@@ -4,8 +4,21 @@ import TextField from "@mui/material/TextField";
 import ArcanaButton from "../Button/Button";
 import { sendContactMessage } from "../../services/contact/contactService";
 import whiteInputStyle from "../../globalStyles/whiteInputStyle";
+import { useEffect, useState } from "react";
+import { supabase } from "../../services/supabaseClient";
+import Response from "../Dialog/Dialog";
+import Button from "@mui/material/Button";
 
-function ContactForm() {
+function ContactFormUser({ userId }) {
+  const [result, setResult] = useState(null);
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -17,12 +30,54 @@ function ContactForm() {
         "Your message has been cast into the cosmic winds. We shall reply when the moon is full.",
       );
       event.target.reset();
-    } catch (error) {
-      alert(error.message);
+    } catch (err) {
+      alert(err.message);
     }
   };
+  useEffect(() => {
+    const fetchMyStatus = async () => {
+      if (!userId) return;
+
+      const { data, error: supabaseError } = await supabase
+        .from("contact_messages")
+        .select("response, status")
+        .eq("user_id", userId)
+        .eq("status", "completed")
+        .order("created_at", { ascending: false })
+        .single();
+
+      if (supabaseError) {
+        console.error(supabaseError);
+        return;
+      }
+
+      if (data && data.status === "completed") {
+        setResult(data.response);
+      }
+    };
+
+    fetchMyStatus();
+  }, [userId]);
+
   return (
     <div>
+      <Button
+        variant="secondary"
+        onClick={handleClickOpen}
+        sx={{
+          position: "fixed",
+          top: 16,
+          right: 16,
+          zIndex: 2,
+        }}
+      >
+        Response
+      </Button>
+      <Response
+        response={result ?? "No response yet"}
+        handleClose={handleClose}
+        open={open}
+      />
       <CardContent
         sx={{
           padding: 1,
@@ -85,4 +140,4 @@ function ContactForm() {
   );
 }
 
-export default ContactForm;
+export default ContactFormUser;
