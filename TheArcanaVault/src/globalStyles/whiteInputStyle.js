@@ -1,5 +1,6 @@
 const whiteInputStyle = {
   width: "100%",
+  maxHeight: "70px",
   overflow: "visible",
   mb: 2,
   "& .MuiInputBase-input": { color: "white" },

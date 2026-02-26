@@ -7,7 +7,7 @@ function MainCard({ children }) {
       sx={{
         width: "90%",
         maxWidth: 1100,
-        height: "85vh",
+        height: { xs: "90vh", md: "85vh" },
         borderRadius: "40px",
         backgroundColor: "rgba(67, 65, 72, 0.4)",
         backdropFilter: "blur(15px)",
@@ -15,13 +15,13 @@ function MainCard({ children }) {
         boxShadow: "none",
         position: "absolute",
         color: "white",
-        // display: "flex",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-        overflowY: "auto",
         display: "block",
         padding: { xs: 2, md: 4 },
+        overflowY: "auto",
+        overflowX: "hidden",
       }}
     >
       {children}

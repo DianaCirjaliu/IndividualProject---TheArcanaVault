@@ -1,12 +1,20 @@
+//material ui components
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import ArcanaButton from "../Button/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import whiteInputStyle from "../../globalStyles/whiteInputStyle";
-import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
+
+//custom components
+import ArcanaButton from "../Button/Button";
+import whiteInputStyle from "../../globalStyles/whiteInputStyle";
+import SecondaryButton from "../SecondaryButton/SecondaryButton";
+
+//service
 import { registerNewUser } from "../../services/auth/signUpService";
+
+//hook
 import { useState } from "react";
 
 function SingUp({ onSwitch }) {
@@ -41,38 +49,45 @@ function SingUp({ onSwitch }) {
   };
 
   return (
-    <>
-      <Button
-        onClick={onSwitch}
-        sx={{
-          position: "fixed",
-          bottom: 70,
-          bgcolor: "rgba(79, 11, 142, 0.47)",
-          color: "white",
-          border: "1px solid rgba(168, 85, 247, 0.5)",
-          borderRadius: "8px",
-          padding: "6px 12px",
-          fontSize: "0.8rem",
-          textTransform: "none",
-          zIndex: 2,
-          transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
-          "&:hover": { transform: "translateY(-4px)" },
-        }}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        gap: 1,
+        pt: { xs: 8, sm: 4, md: 6 },
+        pb: { xs: 10, md: 6 },
+        px: { xs: 2, sm: 4, md: 6 },
+        width: "100%",
+        maxWidth: "600px",
+        margin: "0 auto",
+        maxHeight: "100%",
+        overflowY: "auto",
+        overflowX: "hidden",
+      }}
+    >
+      <Typography
+        variant="h5"
+        sx={{ fontSize: { xs: "1.5rem", md: "2rem" }, textAlign: "center" }}
       >
-        Already have an account? Login
-      </Button>
-      <Typography variant="h5">Create your account now</Typography>
-      <Typography variant="body2" sx={{ textAlign: "center" }}>
+        Create your account now
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{ textAlign: "center", mb: 2, px: { xs: 2, md: 0 } }}
+      >
         The universe has been whispering your name since the dawn of the first
         aeon. <br />
         Now, it is time to claim your celestial identity.
       </Typography>
-      <form
+      <Box
+        component="form"
         onSubmit={handleSubmit}
-        style={{
+        sx={{
           display: "flex",
-          justifyContent: "center",
           flexDirection: "column",
+          width: "100%",
         }}
       >
         <TextField
@@ -129,6 +144,14 @@ function SingUp({ onSwitch }) {
         />
         <FormControlLabel
           required
+          sx={{
+            textAlign: "left",
+            margin: "10px 0",
+            "& .MuiFormControlLabel-label": {
+              fontSize: "0.85rem",
+              color: "rgba(255, 255, 255, 0.8)",
+            },
+          }}
           control={
             <Checkbox
               sx={{
@@ -147,8 +170,13 @@ function SingUp({ onSwitch }) {
           disabled={loading}
           children={loading ? "Aligning stars..." : "Create account"}
         />
-      </form>
-    </>
+      </Box>
+
+      <SecondaryButton
+        children={"Already have an account? Login"}
+        onSwitch={onSwitch}
+      />
+    </Box>
   );
 }
 
