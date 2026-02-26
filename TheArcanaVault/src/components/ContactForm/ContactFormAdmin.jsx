@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import whiteInputStyle from "../../globalStyles/whiteInputStyle";
 import ArcanaButton from "../Button/Button";
+import Box from "@mui/material/Box";
 
 function ContactFormAdmin() {
   const [list, setList] = useState([]);
@@ -31,7 +32,16 @@ function ContactFormAdmin() {
   };
 
   return (
-    <div className="container">
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        m: { xs: 5, sm: 10 },
+      }}
+    >
       <Typography variant="h5">Contact messages</Typography>
       {list.map((item) => (
         <Button
@@ -62,7 +72,7 @@ function ContactFormAdmin() {
           </ArcanaButton>
         </>
       )}
-    </div>
+    </Box>
   );
 }
 

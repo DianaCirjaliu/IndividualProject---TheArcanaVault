@@ -45,6 +45,7 @@ function CardListPage() {
           mb: 6,
           textAlign: "center",
           color: "rgba(255, 255, 255, 0.7)",
+          fontFamily: "'Playfair Display', serif",
         }}
       >
         The Universal Deck
