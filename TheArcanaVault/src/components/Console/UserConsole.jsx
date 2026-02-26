@@ -42,7 +42,11 @@ function UserConsole({ userId }) {
       {result ? (
         <Typography
           variant="h5"
-          sx={{ color: "rgba(255, 255, 255, 0.7)", fontStyle: "italic" }}
+          sx={{
+            color: "rgba(255, 255, 255, 0.7)",
+            fontFamily: "'Playfair Display', serif",
+            fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.5rem" },
+          }}
         >
           The mists have cleared, and the Witch has returned from the silent
           realms. Her vision of your fate is now etched in the stars. Listen
@@ -54,7 +58,11 @@ function UserConsole({ userId }) {
         <>
           <Typography
             variant="h5"
-            sx={{ color: "rgba(255, 255, 255, 0.7)", fontStyle: "italic" }}
+            sx={{
+              color: "rgba(255, 255, 255, 0.7)",
+              fontFamily: "'Playfair Display', serif",
+              fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.5rem" },
+            }}
           >
             Your fate has been sealed in the stars. The Witch is currently
             interpreting the alignment of your soul's reflection. Do not turn
@@ -63,7 +71,13 @@ function UserConsole({ userId }) {
           </Typography>
           <DrawnCards cards={drawnCards} />
 
-          <Box sx={{ width: "200px", margin: "0 auto" }}>
+          <Box
+            sx={{
+              width: { xs: "100px", md: "200px" },
+              margin: "0 auto",
+              display: { xs: "none", sm: "block" },
+            }}
+          >
             <Lottie animationData={magicBallAnim} loop={true} />
           </Box>
         </>
