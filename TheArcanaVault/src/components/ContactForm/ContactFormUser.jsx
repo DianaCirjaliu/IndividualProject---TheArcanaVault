@@ -8,10 +8,12 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../services/supabaseClient";
 import Response from "../Dialog/Dialog";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 function ContactFormUser({ userId }) {
   const [result, setResult] = useState(null);
   const [open, setOpen] = useState(false);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -34,6 +36,7 @@ function ContactFormUser({ userId }) {
       alert(err.message);
     }
   };
+
   useEffect(() => {
     const fetchMyStatus = async () => {
       if (!userId) return;
@@ -60,24 +63,19 @@ function ContactFormUser({ userId }) {
   }, [userId]);
 
   return (
-    <div>
-      <Button
-        variant="secondary"
-        onClick={handleClickOpen}
-        sx={{
-          position: "fixed",
-          top: 16,
-          right: 16,
-          zIndex: 2,
-        }}
-      >
-        Response
-      </Button>
-      <Response
-        response={result ?? "No response yet"}
-        handleClose={handleClose}
-        open={open}
-      />
+    <Box
+      sx={{
+        padding: 2,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 3,
+        width: "100%",
+        maxWidth: "500px",
+        margin: "0 auto",
+      }}
+    >
       <CardContent
         sx={{
           padding: 1,
@@ -88,18 +86,26 @@ function ContactFormUser({ userId }) {
           gap: 3,
         }}
       >
-        <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "rgba(255, 255, 255, 0.6)",
+            fontFamily: "'Playfair Display', serif",
+            textAlign: "center",
+            maxWidth: "400px",
+          }}
+        >
           Speak your truth into the void, or forever remain a mystery to the
           stars. We're listening... if the alignment is right.
         </Typography>
-        <form
+        <Box
+          component="form"
           onSubmit={handleSubmit}
-          style={{
+          sx={{
             display: "flex",
             justifyContent: "center",
             flexDirection: "column",
             width: "100%",
-            overflow: "visible",
           }}
         >
           <TextField
@@ -134,9 +140,17 @@ function ContactFormUser({ userId }) {
             sx={whiteInputStyle}
           />
           <ArcanaButton children={"Submit"} type="submit" />
-        </form>
+          <Button variant="secondary" onClick={handleClickOpen}>
+            Response
+          </Button>
+          <Response
+            response={result ?? "No response yet"}
+            handleClose={handleClose}
+            open={open}
+          />
+        </Box>
       </CardContent>
-    </div>
+    </Box>
   );
 }
 
