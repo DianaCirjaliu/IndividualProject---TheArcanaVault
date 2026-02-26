@@ -33,13 +33,31 @@ function AdminConsole() {
   };
 
   return (
-    <Box sx={{ color: "white", overflow: "auto" }}>
-      <Typography variant="h5">Pending Readings</Typography>
+    <Box
+      sx={{
+        color: "rgba(255, 255, 255, 0.7)",
+        overflow: "auto",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        textAlign: "center",
+        width: "100%",
+        height: "100%",
+        margin: "0 auto",
+      }}
+    >
+      <Typography variant="h5" sx={{ fontFamily: "'Playfair Display', serif" }}>
+        Pending Readings
+      </Typography>
       {list.map((item) => (
         <Button
           key={item.id}
           onClick={() => setSelected(item)}
-          sx={{ color: "white" }}
+          sx={{
+            color: "rgba(255, 255, 255, 0.7)",
+            fontFamily: "'Playfair Display', serif",
+          }}
         >
           User: {item.user_id.slice(0, 5)}
         </Button>
