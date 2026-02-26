@@ -1,3 +1,4 @@
+//global style for input components
 const whiteInputStyle = {
   width: "100%",
   maxHeight: "100px",

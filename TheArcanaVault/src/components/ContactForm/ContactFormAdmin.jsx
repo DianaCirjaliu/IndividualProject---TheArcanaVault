@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
-import { supabase } from "../../services/supabaseClient";
+//material ui components
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+
+//hooks
+import { useEffect, useState } from "react";
+
+//api to database
+import { supabase } from "../../services/supabaseClient";
+
+//custom components
 import whiteInputStyle from "../../globalStyles/whiteInputStyle";
 import ArcanaButton from "../Button/Button";
-import Box from "@mui/material/Box";
 
 function ContactFormAdmin() {
   const [list, setList] = useState([]);
@@ -42,7 +49,15 @@ function ContactFormAdmin() {
         m: { xs: 5, sm: 10 },
       }}
     >
-      <Typography variant="h5">Contact messages</Typography>
+      <Typography
+        variant="h5"
+        sx={{
+          color: "rgba(255, 255, 255, 0.6)",
+          fontFamily: "'Playfair Display', serif",
+        }}
+      >
+        Contact messages
+      </Typography>
       {list.map((item) => (
         <Button
           key={item.id}
@@ -58,7 +73,12 @@ function ContactFormAdmin() {
 
       {selected && (
         <>
-          <Typography sx={{ color: "#ccc", fontStyle: "italic", my: 2 }}>
+          <Typography
+            sx={{
+              color: "rgba(255, 255, 255, 0.6)",
+              fontFamily: "'Playfair Display', serif",
+            }}
+          >
             "{selected.message}"
           </Typography>
           <TextField

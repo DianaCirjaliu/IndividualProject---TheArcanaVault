@@ -1,14 +1,23 @@
+//material ui components
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import ArcanaButton from "../Button/Button";
-import { sendContactMessage } from "../../services/contact/contactService";
-import whiteInputStyle from "../../globalStyles/whiteInputStyle";
-import { useEffect, useState } from "react";
-import { supabase } from "../../services/supabaseClient";
-import Response from "../Dialog/Dialog";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+
+//custom components
+import ArcanaButton from "../Button/Button";
+import whiteInputStyle from "../../globalStyles/whiteInputStyle";
+import Response from "../Dialog/Dialog";
+
+//hooks
+import { useEffect, useState } from "react";
+
+//services
+import { sendContactMessage } from "../../services/contact/contactService";
+
+//api to database
+import { supabase } from "../../services/supabaseClient";
 
 function ContactFormUser({ userId }) {
   const [result, setResult] = useState(null);

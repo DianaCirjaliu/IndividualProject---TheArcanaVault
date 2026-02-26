@@ -1,10 +1,19 @@
-import { useState, useEffect } from "react";
-import { supabase } from "../../services/supabaseClient";
+//material ui components
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+
+//hooks
+import { useState, useEffect } from "react";
+
+//api to database
+import { supabase } from "../../services/supabaseClient";
+
+//animation
 import Lottie from "lottie-react";
 import magicBallAnim from "../../assets/Magic Crystal Ball.json";
-import Box from "@mui/material/Box";
-import DrawnCards from "./DrawnCards"; // Verifică calea
+
+//custom components
+import DrawnCards from "./DrawnCards";
 
 function UserConsole({ userId }) {
   const [result, setResult] = useState(null);

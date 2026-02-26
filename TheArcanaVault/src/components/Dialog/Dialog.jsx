@@ -1,9 +1,12 @@
+//material ui components
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+
+//hooks
 import { useRef, useEffect } from "react";
 
 function Response({ response, handleClose, open }) {

@@ -1,11 +1,22 @@
+//material ui components
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
+//custom components
 import ArcanaButton from "../../components/Button/Button";
 import CardTarot from "../../components/Card/Card";
+
+//hooks
 import { useEffect, useState } from "react";
+
+//utils
 import getData from "../../utils/getData";
+
+//animation
 import Lottie from "lottie-react";
 import tarotCards from "../../assets/Tarot cards.json";
-import Box from "@mui/material/Box";
+
+//api to database
 import { supabase } from "../../services/supabaseClient";
 
 function ReadingPage() {

@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+//imported animation
+
+import { useState, useEffect, useRef } from "react";
 import HALO from "vanta/dist/vanta.halo.min";
 import * as THREE from "three";
 

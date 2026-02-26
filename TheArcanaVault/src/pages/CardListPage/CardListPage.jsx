@@ -1,5 +1,10 @@
+//hooks
 import { useEffect, useState } from "react";
+
+//material ui components
 import { Grid, Container, Typography, Box } from "@mui/material";
+
+//custom component
 import SearchBar from "../../components/SearchBar/SearchBar";
 
 function CardListPage() {
