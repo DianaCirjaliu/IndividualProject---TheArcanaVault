@@ -4,17 +4,20 @@ import { useEffect, useState } from "react";
 //material ui components
 import { Grid, Container, Typography, Box } from "@mui/material";
 
-//custom component
+//custom components
 import SearchBar from "../../components/SearchBar/SearchBar";
+import Loader from "../../components/Loader/Loader";
 
 function CardListPage() {
   const [cards, setCards] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCards = async () => {
       try {
+        setLoading(true);
         const res = await fetch("https://tarotapi.dev/api/v1/cards");
         const data = await res.json();
 
@@ -26,6 +29,8 @@ function CardListPage() {
         setCards(formattedCards);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -60,45 +65,49 @@ function CardListPage() {
         onSort={(criteria) => setSortOrder(criteria)}
       />
 
-      <Grid container spacing={4} justifyContent="center">
-        {displayedCards.map((card, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                transition: "transform 0.3s ease",
-                "&:hover": { transform: "scale(1.05)" },
-              }}
-            >
-              <img
-                src={card.image}
-                alt={card.name}
-                style={{
-                  width: "100%",
-                  maxWidth: "200px",
-                  borderRadius: "12px",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                }}
-              />
-              <Typography
-                variant="h6"
+      {loading ? (
+        <Loader />
+      ) : (
+        <Grid container spacing={4} justifyContent="center">
+          {displayedCards.map((card, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+              <Box
                 sx={{
-                  mt: 2,
-                  textAlign: "center",
-                  fontSize: "1.1rem",
-                  fontWeight: 300,
-                  textShadow: "1px 1px 2px black",
-                  color: "rgba(255, 255, 255, 0.7)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  transition: "transform 0.3s ease",
+                  "&:hover": { transform: "scale(1.05)" },
                 }}
               >
-                {card.name}
-              </Typography>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
+                <img
+                  src={card.image}
+                  alt={card.name}
+                  style={{
+                    width: "100%",
+                    maxWidth: "200px",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                  }}
+                />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    mt: 2,
+                    textAlign: "center",
+                    fontSize: "1.1rem",
+                    fontWeight: 300,
+                    textShadow: "1px 1px 2px black",
+                    color: "rgba(255, 255, 255, 0.7)",
+                  }}
+                >
+                  {card.name}
+                </Typography>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Container>
   );
 }
