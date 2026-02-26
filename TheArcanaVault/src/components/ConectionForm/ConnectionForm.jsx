@@ -1,10 +1,18 @@
+//material ui components
 import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
+//custom components
 import SingUp from "../SignUp/SingUp";
 import LogIn from "../Login/LogIn";
-import { useEffect, useState } from "react";
-import { supabase } from "../../services/supabaseClient";
-import Typography from "@mui/material/Typography";
 import ArcanaButton from "../Button/Button";
+
+//hooks
+import { useEffect, useState } from "react";
+
+//supabase api connection
+import { supabase } from "../../services/supabaseClient";
 
 function ConnectionForm() {
   const [isLogin, setIsLogin] = useState(false);
@@ -46,17 +54,18 @@ function ConnectionForm() {
   }
 
   return (
-    <div>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        width: "100%",
+      }}
+    >
       <CardContent
         sx={{
-          padding: 1,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
           color: "rgba(255, 255, 255, 0.6)",
-          gap: 0.5,
-          height: "auto",
         }}
       >
         {isLogin ? (
@@ -65,7 +74,7 @@ function ConnectionForm() {
           <LogIn onSwitch={() => setIsLogin(true)} />
         )}
       </CardContent>
-    </div>
+    </Box>
   );
 }
 

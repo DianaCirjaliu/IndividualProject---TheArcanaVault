@@ -1,11 +1,19 @@
+//material ui components
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+
+//custom components
 import ArcanaButton from "../Button/Button";
 import whiteInputStyle from "../../globalStyles/whiteInputStyle";
-import Button from "@mui/material/Button";
+import SecondaryButton from "../SecondaryButton/SecondaryButton";
+
+//hooks
 import { useState } from "react";
-import { loginUser } from "../../services/auth/logInService";
 import { useDispatch } from "react-redux";
+
+//services
+import { loginUser } from "../../services/auth/logInService";
 import { setCredentials } from "../../store/authSlice";
 
 function LogIn({ onSwitch }) {
@@ -34,33 +42,29 @@ function LogIn({ onSwitch }) {
     }
   };
   return (
-    <>
-      <Button
-        onClick={onSwitch}
-        sx={{
-          position: "fixed",
-          bottom: 200,
-          bgcolor: "rgba(79, 11, 142, 0.47)",
-          color: "white",
-          border: "1px solid rgba(168, 85, 247, 0.5)",
-          borderRadius: "8px",
-          padding: "6px 12px",
-          fontSize: "0.8rem",
-          textTransform: "none",
-          transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
-          zIndex: 2,
-          "&:hover": { transform: "translateY(-4px)" },
-        }}
-      >
-        Don't have an account? Sign up now
-      </Button>
+    <Box
+      sx={{
+        gap: 3,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        height: "100%",
+        margin: "0 auto",
+        width: "100%",
+        pt: { xs: 8, sm: 4, md: 20 },
+        pb: { xs: 10, md: 6 },
+        px: { xs: 2, sm: 4, md: 20 },
+      }}
+    >
       <Typography variant="h5">Login into your account now</Typography>
       <Typography variant="body2">
         The stars incline, but they do not bind... unless you forget your
         password.
       </Typography>
 
-      <form
+      <Box
+        component="form"
         onSubmit={handleSubmit}
         style={{
           display: "flex",
@@ -91,8 +95,13 @@ function LogIn({ onSwitch }) {
           type="submit"
           disabled={loading}
         />
-      </form>
-    </>
+      </Box>
+
+      <SecondaryButton
+        children={"Don't have an account? Sign up now"}
+        onSwitch={onSwitch}
+      />
+    </Box>
   );
 }
 
