@@ -8,38 +8,58 @@ function CardTarot({ image, name, meaning, description }) {
     <Box
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", md: "row" },
+        flexDirection: { xs: "column-reverse", md: "row" },
         alignItems: "center",
         justifyContent: "center",
         bgcolor: "rgba(207, 198, 198, 0.21)",
         borderRadius: "20px",
         maxWidth: "900px",
+        widows: "100%",
         margin: "20px auto",
         border: "1px solid rgba(238, 235, 241, 0.3)",
+        overflow: "hidden",
       }}
     >
       {/*text colon */}
       <CardContent
         sx={{
-          display: "grid",
-          justifyContent: "center",
-          textAlign: "center",
+          flex: 1,
+          display: { xs: "none", sm: "flex" },
+          justifyContent: { xs: "flex-start", md: "center" },
+          textAlign: { xs: "center", md: "left" },
           flexDirection: "column",
-          maxHeight: "500px",
-          maxWidth: "300px",
-          overflow: "auto",
-          gap: 4,
-          pt: 6,
-          pb: 6,
+          maxWidth: "100%",
+          p: 5,
+          gap: 2,
+          maxHeight: { xs: "300px", md: "500px" },
+          overflowY: "auto",
         }}
       >
-        <Typography gutterBottom variant="h5">
+        <Typography
+          variant="h5"
+          sx={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: { xs: "1.5rem", md: "2.1rem" },
+          }}
+        >
           {name}
         </Typography>
-        <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "rgba(255, 255, 255, 0.7)",
+            fontFamily: "'Playfair Display', serif",
+          }}
+        >
           Meaning: {meaning}
         </Typography>
-        <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "rgba(255, 255, 255, 0.7)",
+            fontFamily: "'Playfair Display', serif",
+          }}
+        >
           Description: {description}
         </Typography>
       </CardContent>
@@ -50,22 +70,24 @@ function CardTarot({ image, name, meaning, description }) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          p: 4,
+          p: { xs: 2, md: 4 },
+          bgcolor: "transparent",
+          width: "100%",
         }}
       >
-        <Box sx={{ p: 2, flexShrink: 0 }}>
-          <CardMedia
-            component="img"
-            sx={{
-              height: 400,
-              width: 300,
-              objectFit: "contain",
-              borderRadius: "12px",
-            }}
-            image={image}
-            title="card image"
-          />
-        </Box>
+        <CardMedia
+          component="img"
+          sx={{
+            height: { xs: 300, sm: 400, md: 450 },
+            width: "auto",
+            maxWidth: "100%",
+            objectFit: "contain",
+            borderRadius: "12px",
+            boxShadow: "0px 10px 30px rgba(0,0,0,0.5)",
+          }}
+          image={image}
+          title="card image"
+        />
       </Box>
     </Box>
   );

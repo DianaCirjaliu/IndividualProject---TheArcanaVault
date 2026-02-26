@@ -74,7 +74,17 @@ function ReadingPage() {
   };
 
   return (
-    <div className="container" style={{ gap: "20px" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        width: "100%",
+        height: "100%",
+      }}
+    >
       {!user && (
         <Typography
           variant="h6"
@@ -109,10 +119,7 @@ function ReadingPage() {
 
       <Box
         sx={{
-          width: "800px",
-          margin: "0 auto",
-          display: "flex",
-          justifyContent: "center",
+          width: { xs: "280px", sm: "400px", md: "800px" },
         }}
       >
         {drawnCards.length === 3 && !card && (
@@ -125,7 +132,7 @@ function ReadingPage() {
         onClick={drawCard}
         disabled={drawnCards.length === 3 || !user}
       ></ArcanaButton>
-    </div>
+    </Box>
   );
 }
 
