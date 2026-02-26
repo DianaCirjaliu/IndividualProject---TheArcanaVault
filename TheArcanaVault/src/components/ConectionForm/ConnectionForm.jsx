@@ -60,9 +60,9 @@ function ConnectionForm() {
         }}
       >
         {isLogin ? (
-          <LogIn onSwitch={() => setIsLogin(false)} />
+          <SingUp onSwitch={() => setIsLogin(false)} />
         ) : (
-          <SingUp onSwitch={() => setIsLogin(true)} />
+          <LogIn onSwitch={() => setIsLogin(true)} />
         )}
       </CardContent>
     </div>
