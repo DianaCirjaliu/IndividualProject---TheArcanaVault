@@ -1,28 +1,42 @@
+//material ui components
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
-import NavBar from "../../components/NavBar/NavBar";
+import Box from "@mui/material/Box";
+
+//custom components import
 import ArcanaButton from "../../components/Button/Button";
-// import zodiac from "/zodiac.png";
+
+//animation
 import Lottie from "lottie-react";
 import zodiac from "../../assets/Zodiac sign.json";
 
 function Index() {
   return (
-    <div className="container" style={{ flexDirection: "row" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        width: { xs: "100%", md: "auto" },
+        alignItems: "center",
+        justifyContent: "center",
+        pt: { xs: "calc(40% + 50px)", sm: 15 },
+        pb: { xs: "calc(40% + 50px)", sm: 15 },
+      }}
+    >
       {/*text colon */}
       <CardContent
         sx={{
-          p: { xs: 4, md: 8 },
+          p: { xs: 2, md: 8 },
           flex: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           gap: 3,
+          alignItems: { xs: "center", md: "flex-start" },
+          textAlign: { xs: "center", md: "left" },
+          width: { xs: "100%", md: "auto" },
         }}
       >
-        <NavBar />
         <Typography
           variant="h2"
           component="div"
@@ -30,7 +44,7 @@ function Index() {
             fontWeight: 500,
             mb: 2,
             fontFamily: "serif",
-            fontSize: { xs: "2rem", md: "3.5rem" },
+            fontSize: { xs: "2rem", md: "4rem" },
           }}
         >
           Welcome to <br />
@@ -52,7 +66,6 @@ function Index() {
           sx={{
             color: "rgba(255, 255, 255, 0.6)",
             maxWidth: 400,
-            lineHeight: 1.6,
           }}
         >
           Explore yourself. Explore the future, if you dare
@@ -63,7 +76,7 @@ function Index() {
       <Box
         sx={{
           flex: 1,
-          display: "flex",
+          display: { xs: "none", sm: "flex" },
           justifyContent: "center",
           alignItems: "center",
           p: 4,
@@ -71,7 +84,7 @@ function Index() {
       >
         <Lottie animationData={zodiac} loop={false} />
       </Box>
-    </div>
+    </Box>
   );
 }
 

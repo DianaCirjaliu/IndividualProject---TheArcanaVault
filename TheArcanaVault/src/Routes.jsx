@@ -13,8 +13,8 @@ function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Index />} />
           <Route element={<SecondaryLayout />}>
+            <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/readingPage" element={<ReadingPage />} />
