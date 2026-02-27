@@ -46,8 +46,22 @@ function ConnectionForm() {
           alignItems: "center",
         }}
       >
-        <Typography variant="h5">Welcome back, Seeker</Typography>
-        <Typography variant="body2">
+        <Typography
+          variant="h5"
+          sx={{
+            color: "rgba(255, 255, 255, 0.7)",
+            fontFamily: "'Playfair Display', serif",
+          }}
+        >
+          Welcome back, Seeker
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "rgba(255, 255, 255, 0.7)",
+            fontFamily: "'Playfair Display', serif",
+          }}
+        >
           The vault is open for: {user.email}
         </Typography>
         <ArcanaButton onClick={() => supabase.auth.signOut()}>

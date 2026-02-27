@@ -6,7 +6,7 @@ function Loader() {
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
       <Stack sx={{ color: "grey.500" }} spacing={2} direction="row">
-        <CircularProgress color="secondary" />
+        <CircularProgress color="inherit" />
       </Stack>
     </Box>
   );

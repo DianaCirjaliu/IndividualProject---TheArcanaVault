@@ -54,7 +54,7 @@ function SearchBar({ onSearch, onSort }) {
 
       <InputBase
         sx={{ ml: 1, flex: 1 }}
-        placeholder="Search cards..."
+        placeholder="Search..."
         onChange={handleChange}
       />
 

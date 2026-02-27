@@ -54,7 +54,13 @@ function AdminConsole() {
         margin: "0 auto",
       }}
     >
-      <Typography variant="h5" sx={{ fontFamily: "'Playfair Display', serif" }}>
+      <Typography
+        variant="h5"
+        sx={{
+          color: "rgba(255, 255, 255, 0.7)",
+          fontFamily: "'Playfair Display', serif",
+        }}
+      >
         Pending Readings
       </Typography>
       {list.map((item) => (

@@ -56,7 +56,7 @@ function ContactFormAdmin() {
           fontFamily: "'Playfair Display', serif",
         }}
       >
-        Contact messages
+        Pending contact messages
       </Typography>
       {list.map((item) => (
         <Button

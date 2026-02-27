@@ -54,6 +54,7 @@ function SingUp({ onSwitch }) {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
+        textAlign: "center",
         alignItems: "center",
         gap: 1,
         pt: { xs: 8, sm: 4, md: 6 },
@@ -69,13 +70,22 @@ function SingUp({ onSwitch }) {
     >
       <Typography
         variant="h5"
-        sx={{ fontSize: { xs: "1.5rem", md: "2rem" }, textAlign: "center" }}
+        sx={{
+          fontSize: { xs: "1.5rem", md: "2rem" },
+          color: "rgba(255, 255, 255, 0.7)",
+          fontFamily: "'Playfair Display', serif",
+        }}
       >
         Create your account now
       </Typography>
       <Typography
         variant="body2"
-        sx={{ textAlign: "center", mb: 2, px: { xs: 2, md: 0 } }}
+        sx={{
+          mb: 2,
+          px: { xs: 2, md: 0 },
+          color: "rgba(255, 255, 255, 0.7)",
+          fontFamily: "'Playfair Display', serif",
+        }}
       >
         The universe has been whispering your name since the dawn of the first
         aeon. <br />
@@ -150,6 +160,7 @@ function SingUp({ onSwitch }) {
             "& .MuiFormControlLabel-label": {
               fontSize: "0.85rem",
               color: "rgba(255, 255, 255, 0.8)",
+              fontFamily: "'Playfair Display', serif",
             },
           }}
           control={

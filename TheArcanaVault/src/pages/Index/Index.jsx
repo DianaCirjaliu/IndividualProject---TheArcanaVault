@@ -47,7 +47,8 @@ function Index() {
           sx={{
             fontWeight: 500,
             mb: 2,
-            fontFamily: "serif",
+            color: "rgba(255, 255, 255, 0.7)",
+            fontFamily: "'Playfair Display', serif",
             fontSize: { xs: "2rem", md: "4rem" },
           }}
         >
@@ -70,6 +71,7 @@ function Index() {
           sx={{
             color: "rgba(255, 255, 255, 0.6)",
             maxWidth: 400,
+            fontFamily: "'Playfair Display', serif",
           }}
         >
           Explore yourself. Explore the future, if you dare
