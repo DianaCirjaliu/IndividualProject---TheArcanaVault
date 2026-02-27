@@ -25,9 +25,10 @@ function ConnectionForm() {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
     });
+
     return () => subscription.unsubscribe();
   }, []);
 
@@ -64,7 +65,17 @@ function ConnectionForm() {
         >
           The vault is open for: {user.email}
         </Typography>
-        <ArcanaButton onClick={() => supabase.auth.signOut()}>
+        <ArcanaButton
+          onClick={() => {
+            const currentUserId = user?.id;
+            supabase.auth.signOut();
+            localStorage.clear();
+            if (currentUserId) {
+              localStorage.removeItem(`userFate_${currentUserId}`);
+            }
+            setUser(null);
+          }}
+        >
           Leave the Vault
         </ArcanaButton>
       </CardContent>
