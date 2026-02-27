@@ -6,11 +6,15 @@ import Box from "@mui/material/Box";
 //custom components import
 import ArcanaButton from "../../components/Button/Button";
 
+//hook
+import { useNavigate } from "react-router-dom";
+
 //animation
 import Lottie from "lottie-react";
 import zodiac from "../../assets/Zodiac sign.json";
 
 function Index() {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -70,7 +74,10 @@ function Index() {
         >
           Explore yourself. Explore the future, if you dare
         </Typography>
-        <ArcanaButton children={"Get Started"} />
+        <ArcanaButton
+          children={"Get Started"}
+          onClick={() => navigate("/login")}
+        />
       </CardContent>
       {/*image colon */}
       <Box
