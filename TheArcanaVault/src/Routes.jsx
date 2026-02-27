@@ -7,12 +7,14 @@ import Contact from "./pages/Contact/Contact";
 import ReadingPage from "./pages/ReadingPage/ReadingPage";
 import PredictionPage from "./pages/PredictionPage/PredictionPage";
 import CardListPage from "./pages/CardListPage/CardListPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
+          <Route path="*" element={<ErrorPage />} />
           <Route element={<SecondaryLayout />}>
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
