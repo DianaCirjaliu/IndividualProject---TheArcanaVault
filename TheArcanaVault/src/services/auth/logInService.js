@@ -9,7 +9,7 @@ export const loginUser = async (email, password) => {
 
     if (error) throw error;
 
-    const { data: profile, error: profileError } = await supabase
+    const { data: profile } = await supabase
       .from("profiles")
       .select("role")
       .eq("id", data.user.id)
