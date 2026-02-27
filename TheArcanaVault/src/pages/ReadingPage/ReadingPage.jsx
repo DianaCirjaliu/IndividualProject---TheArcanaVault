@@ -9,9 +9,6 @@ import CardTarot from "../../components/Card/Card";
 //hooks
 import { useEffect, useState } from "react";
 
-//utils
-import getData from "../../utils/getData";
-
 //animation
 import Lottie from "lottie-react";
 import tarotCards from "../../assets/Tarot cards.json";
@@ -25,22 +22,43 @@ function ReadingPage() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    const checkLastReading = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       const currentUser = session?.user ?? null;
       setUser(currentUser);
 
       if (currentUser) {
-        const cards = getData(currentUser.id);
-        setDrawnCards(cards);
+        const { data, error } = await supabase
+          .from("readings")
+          .select("cards, created_at")
+          .eq("user_id", currentUser.id)
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle();
+
+        if (data) {
+          const lastReadingDate = new Date(data.created_at).getTime();
+          const now = Date.now();
+          const dayInMs = 24 * 60 * 60 * 1000;
+
+          if (now - lastReadingDate < dayInMs) {
+            setDrawnCards(data.cards || []);
+          } else {
+            setDrawnCards([]);
+          }
+        }
+
+        if (error) console.log(error);
       }
-    });
+    };
+
+    checkLastReading();
   }, []);
 
   const drawCard = async () => {
-    if (drawnCards.length >= 3) {
-      alert("The stars have spoken. No more cards can be drawn today.");
-      return;
-    }
+    if (drawnCards.length >= 3) return;
 
     try {
       const res = await fetch("https://tarotapi.dev/api/v1/cards/random?n=1");
@@ -59,25 +77,17 @@ function ReadingPage() {
       setDrawnCards(updatedCards);
 
       if (updatedCards.length === 3) {
-        const readingData = {
-          user_id: user.id,
-          cards: updatedCards,
-          status: "pending",
-        };
+        const { error } = await supabase.from("readings").insert([
+          {
+            user_id: user.id,
+            cards: updatedCards,
+            status: "pending",
+          },
+        ]);
 
-        const { error } = await supabase.from("readings").insert([readingData]);
-        if (error) {
-          console.log(error);
-        } else {
-          localStorage.setItem(
-            `userFate_${user.id}`,
-            JSON.stringify({ cards: updatedCards, timestamp: Date.now() }),
-          );
-        }
+        if (error) console.error("Database error:", error);
 
-        setTimeout(() => {
-          setCard(null);
-        }, 20000);
+        setTimeout(() => setCard(null), 20000);
       }
     } catch (e) {
       console.error("The stars are silent...", e);
