@@ -101,7 +101,7 @@ function ReadingPage() {
           variant="h6"
           sx={{
             color: "rgba(255, 255, 255, 0.7)",
-            fontStyle: "italic",
+            fontFamily: "'Playfair Display', serif",
             mb: 2,
             textAlign: "center",
           }}
@@ -110,12 +110,12 @@ function ReadingPage() {
         </Typography>
       )}
       {card && <CardTarot {...card} />}
-      {drawnCards.length === 0 && (
+      {drawnCards.length === 0 && user && (
         <Typography
           variant="h6"
           sx={{
             color: "rgba(255, 255, 255, 0.7)",
-            fontStyle: "italic",
+            fontFamily: "'Playfair Display', serif",
             mb: 2,
             textAlign: "center",
           }}

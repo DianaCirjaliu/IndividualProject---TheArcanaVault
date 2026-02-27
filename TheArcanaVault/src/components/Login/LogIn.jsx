@@ -57,8 +57,22 @@ function LogIn({ onSwitch }) {
         px: { xs: 2, sm: 4, md: 20 },
       }}
     >
-      <Typography variant="h5">Login into your account now</Typography>
-      <Typography variant="body2">
+      <Typography
+        variant="h5"
+        sx={{
+          color: "rgba(255, 255, 255, 0.7)",
+          fontFamily: "'Playfair Display', serif",
+        }}
+      >
+        Login into your account now
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{
+          color: "rgba(255, 255, 255, 0.7)",
+          fontFamily: "'Playfair Display', serif",
+        }}
+      >
         The stars incline, but they do not bind... unless you forget your
         password.
       </Typography>

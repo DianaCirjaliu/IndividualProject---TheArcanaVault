@@ -4,7 +4,10 @@ const whiteInputStyle = {
   maxHeight: "100px",
   mb: 2,
   "& .MuiInputBase-input": { color: "white" },
-  "& .MuiInputLabel-root": { color: "rgba(255, 255, 255, 0.7)" },
+  "& .MuiInputLabel-root": {
+    color: "rgba(255, 255, 255, 0.7)",
+    fontFamily: "'Playfair Display', serif",
+  },
   "& .MuiInputLabel-root.Mui-focused": { color: "white" },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
